@@ -3,8 +3,11 @@ import { Notify } from "notiflix";
 import severalCards from './templates/severalCards.hbs';
 import oneCard from './templates/oneCard.hbs';
 import { fetchCountries } from "./js/fetchCountries";
-import "./css/styles.css";
+
+import "./css/style.scss"
+
 const DEBOUNCE_DELAY = 300;
+
 
 const input = document.querySelector('[id="search-box"]');
 const countryList = document.querySelector(".country-list");
