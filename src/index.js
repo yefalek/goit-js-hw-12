@@ -1,7 +1,7 @@
 import debounce from 'lodash.debounce';
 import { Notify } from "notiflix";
-import cards from './templates/cards.hbs';
-import mainCard from './templates/mainCard.hbs';
+import severalCards from './templates/severalCards.hbs';
+import oneCard from './templates/oneCard.hbs';
 import { fetchCountries } from "./js/fetchCountries";
 import "./css/styles.css";
 const DEBOUNCE_DELAY = 300;
@@ -27,12 +27,12 @@ function onInput(evt) {
   }
 
   if (data.length === 1) {
-  rendermainCard(data[0]);
+  renderOneCard(data[0]);
   
   }
 
   if (data.length >= 2 && data.length <= 10) {
-  rendercards({ data });
+  renderSeveralCards({ data });
    }   
   })
   .catch(error => {
@@ -43,16 +43,16 @@ function onInput(evt) {
 
 };
 
-function rendermainCard(data) {
+function renderOneCard(data) {
  const lang =data.languages.map(l => l.name).join(', ');
- const markup = mainCard({ data, lang });
+ const markup = oneCard({ data, lang });
  countryList.innerHTML = markup;
 
 }
 
 
-function rendercards(data) {
-const markup = cards(data);
+function renderSeveralCards(data) {
+const markup = severalCards(data);
 countryList.innerHTML = markup;
 
 }
